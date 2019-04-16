@@ -1,19 +1,23 @@
 RESTART
-MOLINFO STRUCTURE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_L.pdb
+MOLINFO STRUCTURE=UUCG_8_L.pdb
 WHOLEMOLECULES ENTITY0=1-254
 
-e0: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_H.pdb
-e3: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_L.pdb
+e0: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=UUCG_8_H.pdb
+e3: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=UUCG_8_L.pdb
 
-ee3: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_L.pdb CUTOFF=3.2
+ee3: ERMSD ATOMS=@lcs-1,@lcs-2,@lcs-3,@lcs-4,@lcs-5,@lcs-6,@lcs-7,@lcs-8 REFERENCE=UUCG_8_L.pdb CUTOFF=3.2
 
-r0: RMSD REFERENCE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_H.pdb TYPE=OPTIMAL
-r3: RMSD REFERENCE=/scratch/sbottaro/projects/ermsd_pt/script/pdb/UUCG_8_L.pdb TYPE=OPTIMAL
+r0: RMSD REFERENCE=UUCG_8_H.pdb TYPE=OPTIMAL
+r3: RMSD REFERENCE=UUCG_8_L.pdb TYPE=OPTIMAL
 
 
 metad: METAD ARG=ee3 PACE=500000001 HEIGHT=0.0 SIGMA=0.1 FILE=HILLS_avg_5 TEMP=300.882 BIASFACTOR=15 GRID_MIN=0.0 GRID_MAX=5.0 GRID_BIN=250
 
 PRINT ARG=e3,ee3,e0,r3,r0,metad.bias FILE=colvar_5 STRIDE=1
+
+ENDPLUMED
+
+# histograms below are computed using PLUMED 2.3 syntax
 
 HISTOGRAM ...
 REWEIGHT_BIAS
